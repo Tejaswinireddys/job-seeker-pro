@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -37,20 +38,21 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Job-related color palette */
+    --job-success: 142 76% 36%;
+    --job-warning: 38 92% 50%;
+    --job-info: 221 83% 53%;
+    --job-purple: 262 83% 58%;
+    --job-pink: 336 84% 57%;
+    --job-teal: 173 58% 39%;
   }
 
   .dark {
@@ -98,6 +100,32 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 text-foreground min-h-screen;
+  }
+}
+
+@layer components {
+  .job-gradient-bg {
+    @apply bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600;
+  }
+  
+  .job-card-hover {
+    @apply hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
+  }
+  
+  .job-stat-card {
+    @apply bg-gradient-to-r hover:scale-105 transition-transform duration-200;
+  }
+  
+  .dashboard-bg {
+    @apply bg-gradient-to-br from-emerald-50 via-blue-50 to-purple-50;
+  }
+  
+  .search-bg {
+    @apply bg-gradient-to-br from-orange-50 via-yellow-50 to-red-50;
+  }
+  
+  .applications-bg {
+    @apply bg-gradient-to-br from-cyan-50 via-teal-50 to-blue-50;
   }
 }
