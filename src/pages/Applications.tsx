@@ -65,7 +65,7 @@ const statusColors = {
 
 export default function Applications() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [statusFilter, setStatusFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all");
   const { toast } = useToast();
 
   const handleFollowUp = (applicationId: number, company: string) => {
@@ -78,7 +78,7 @@ export default function Applications() {
   const filteredApplications = mockApplications.filter(app => {
     const matchesSearch = app.jobTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          app.company.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesStatus = !statusFilter || app.status === statusFilter;
+    const matchesStatus = statusFilter === "all" || app.status === statusFilter;
     return matchesSearch && matchesStatus;
   });
 
@@ -136,7 +136,7 @@ export default function Applications() {
                 <SelectValue placeholder="Filter by status" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Statuses</SelectItem>
+                <SelectItem value="all">All Statuses</SelectItem>
                 <SelectItem value="Applied">Applied</SelectItem>
                 <SelectItem value="Under Review">Under Review</SelectItem>
                 <SelectItem value="Interview Scheduled">Interview Scheduled</SelectItem>
